@@ -10,6 +10,7 @@ import StickyAddToCart from "@/components/pdp/StickyAddToCart";
 import ProductCarousels from "@/components/pdp/ProductCarousels";
 import BrandBanner from "@/components/pdp/BrandBanner";
 import MedicalDisclaimer from "@/components/pdp/MedicalDisclaimer";
+import Footer from "@/components/pdp/Footer";
 
 const ProductDetail = () => {
   return (
@@ -44,6 +45,8 @@ const ProductDetail = () => {
         <ProductReviews />
 
         <MedicalDisclaimer />
+
+        <Footer />
 
         <div className="h-20" /> {/* Space for sticky bar */}
       </main>
