@@ -2,6 +2,7 @@ import { Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import drmaxLogo from "@/assets/drmax-logo.svg";
 import footerBadges from "@/assets/footer-badges.png";
+import msCommonLogo from "@/assets/ms-common-logo.png";
 
 type FooterSection = {
   title: string;
@@ -204,18 +205,6 @@ const Footer = () => {
         />
       </div>
 
-      {/* Obligatoriu 3: Iframe Ministerul Sănătății — EU Common Logo farmacie online */}
-      <div className="px-4 py-4 border-t border-white/10 flex justify-center">
-        <iframe
-          src="https://ec.europa.eu/tools/eudor/api/badges/v1/badge?country=RO&id=9378655"
-          title="Verificare farmacie online - Ministerul Sănătății"
-          className="border-0 rounded-lg bg-white"
-          width="160"
-          height="190"
-          scrolling="no"
-        />
-      </div>
-
       {/* Obligatoriu 2: Copyright + date juridice complete */}
       <div className="px-4 py-4 border-t border-white/10">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -250,6 +239,21 @@ const Footer = () => {
             Mezanin Suplimentară, Ilfov, autorizația MS 3059/NT3480/04.06.2020
           </p>
         </div>
+      </div>
+
+      {/* Obligatoriu 3: Common Logo Ministerul Sănătății — ultimul element pe pagină */}
+      <div className="px-4 py-5 border-t border-white/10 flex justify-center">
+        <a
+          href="https://ms.ro/ro/informatii-de-interes-public/pacienti/registrul-farmaciilor-online/?q=DR.MAX"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={msCommonLogo}
+            alt="Faceți click aici pentru a verifica dacă acest site funcționează în condiții legale - Ministerul Sănătății"
+            className="w-[140px] h-auto"
+          />
+        </a>
       </div>
     </footer>
   );
