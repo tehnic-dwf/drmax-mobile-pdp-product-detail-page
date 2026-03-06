@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Heart, ShoppingCart, Minus, Plus, Clock, Truck, Bell } from "lucide-react";
+import { type Product } from "@/data/products";
 
-const ProductBuyBox = () => {
+type Props = { product: Product };
+
+const ProductBuyBox = ({ product }: Props) => {
   const [qty, setQty] = useState(1);
   const [isFav, setIsFav] = useState(false);
 
-  // Simulated urgency timer
   const hoursLeft = 3;
   const minutesLeft = 42;
+  const savings = product.oldPrice ? (product.oldPrice - product.price).toFixed(2).replace(".", ",") : null;
+  const discountPct = product.oldPrice ? Math.round((1 - product.price / product.oldPrice) * 100) : null;
 
   return (
     <div className="px-4 py-4 space-y-3">
@@ -15,12 +19,14 @@ const ProductBuyBox = () => {
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <span className="drmax-stock-label flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-drmax-success animate-pulse" />
-            În stoc
+            <span className={`w-2 h-2 rounded-full ${product.stockStatus === "out-of-stock" ? "bg-drmax-red" : "bg-drmax-success"} ${product.stockStatus === "low-stock" ? "animate-pulse" : ""}`} />
+            {product.stockStatus === "out-of-stock" ? "Stoc epuizat" : "În stoc"}
           </span>
-          <span className="text-[10px] font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded-full">
-            ⚡ Ultimele 5 bucăți
-          </span>
+          {product.stockStatus === "low-stock" && product.stockCount && (
+            <span className="text-[10px] font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded-full">
+              ⚡ Ultimele {product.stockCount} bucăți
+            </span>
+          )}
         </div>
         <div className="flex items-center gap-1.5 text-xs">
           <Truck className="w-3.5 h-3.5 text-primary" />
@@ -40,39 +46,46 @@ const ProductBuyBox = () => {
       <div className="bg-card rounded-xl border p-4 shadow-drmax-sm">
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-baseline gap-2">
-            <span className="drmax-price-old">87,99</span>
-            <span className="drmax-price-current">74,49</span>
+            {product.oldPrice && (
+              <span className="drmax-price-old">{product.oldPrice.toFixed(2).replace(".", ",")}</span>
+            )}
+            <span className="drmax-price-current">{product.price.toFixed(2).replace(".", ",")}</span>
             <span className="text-base font-bold text-drmax-price">Lei</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-[10px] font-bold text-white bg-accent px-2 py-0.5 rounded-full">
-            -15% · Economisești 13,50 Lei
-          </span>
-        </div>
-        <p className="text-xs text-muted-foreground">Preț / BUC: 74,49 Lei · incl. TVA</p>
+        {savings && discountPct && (
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[10px] font-bold text-white bg-accent px-2 py-0.5 rounded-full">
+              -{discountPct}% · Economisești {savings} Lei
+            </span>
+          </div>
+        )}
+        <p className="text-xs text-muted-foreground">Preț: {product.pricePerUnit} · incl. TVA</p>
 
-        {/* Loyalty points highlight */}
+        {/* Loyalty points */}
         <div className="mt-2 flex items-center gap-2 bg-drmax-yellow/10 rounded-lg px-3 py-2 border border-drmax-yellow/30">
           <span className="text-sm">🎁</span>
           <span className="text-xs text-foreground">
-            Câștigi <strong className="text-drmax-orange">+74 puncte DrMax</strong> la această comandă
+            Câștigi <strong className="text-drmax-orange">+{product.loyaltyPoints} puncte DrMax</strong> la această comandă
           </span>
         </div>
 
         {/* Loyalty price */}
-        <div className="mt-2 flex items-center gap-2 bg-drmax-green-light rounded-lg px-3 py-2">
-          <span className="text-[10px] font-bold text-primary bg-card px-1.5 py-0.5 rounded">CARD</span>
-          <span className="text-xs text-foreground">
-            Cu card Dr.Max: <strong className="text-primary">66,99 Lei</strong>
-            <span className="text-muted-foreground ml-1">(-24%)</span>
-          </span>
-        </div>
+        {product.loyaltyPrice && (
+          <div className="mt-2 flex items-center gap-2 bg-drmax-green-light rounded-lg px-3 py-2">
+            <span className="text-[10px] font-bold text-primary bg-card px-1.5 py-0.5 rounded">CARD</span>
+            <span className="text-xs text-foreground">
+              Cu card Dr.Max: <strong className="text-primary">{product.loyaltyPrice.toFixed(2).replace(".", ",")} Lei</strong>
+              {product.loyaltyDiscount && (
+                <span className="text-muted-foreground ml-1">({product.loyaltyDiscount})</span>
+              )}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Qty + Add to cart */}
       <div className="flex gap-3">
-        {/* Quantity */}
         <div className="flex items-center border rounded-lg overflow-hidden bg-card">
           <button
             onClick={() => setQty(Math.max(1, qty - 1))}
@@ -91,13 +104,11 @@ const ProductBuyBox = () => {
           </button>
         </div>
 
-        {/* Add to cart button */}
         <button id="main-add-to-cart" className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold text-sm py-3 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-drmax-sm">
           <ShoppingCart className="w-4 h-4" />
           Adaugă în coș
         </button>
       </div>
-
 
       {/* Secondary actions */}
       <div className="flex items-center justify-center gap-6">
@@ -109,9 +120,7 @@ const ProductBuyBox = () => {
           {isFav ? "Salvat" : "Favorite"}
         </button>
         <div className="w-px h-4 bg-border" />
-        <button
-          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors py-1"
-        >
+        <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors py-1">
           <Bell className="w-4 h-4" />
           Alertă de preț
         </button>

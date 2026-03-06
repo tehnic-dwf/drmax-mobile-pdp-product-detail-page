@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const variants = [
-  { label: "15ml", available: false, image: null },
-  { label: "40ml", available: true, image: null },
-  { label: "100ml", available: true, image: null },
-];
+type Props = {
+  variants: { label: string; available: boolean }[];
+};
 
-const ProductVariants = () => {
-  const [selected, setSelected] = useState(2); // 100ml selected
+const ProductVariants = ({ variants }: Props) => {
+  const defaultSelected = variants.findIndex((v) => v.available);
+  const [selected, setSelected] = useState(defaultSelected >= 0 ? defaultSelected : 0);
+  const availableCount = variants.filter((v) => v.available).length;
 
   return (
     <div className="px-4 py-3">
@@ -35,7 +35,9 @@ const ProductVariants = () => {
           </button>
         ))}
       </div>
-      <p className="text-xs text-muted-foreground mt-1.5">2 variante disponibile din 3</p>
+      <p className="text-xs text-muted-foreground mt-1.5">
+        {availableCount} variante disponibile din {variants.length}
+      </p>
     </div>
   );
 };
