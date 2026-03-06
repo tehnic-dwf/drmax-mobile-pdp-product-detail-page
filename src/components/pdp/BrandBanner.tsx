@@ -1,23 +1,28 @@
-import { Droplets, ShieldCheck, Leaf, Pill } from "lucide-react";
+import { Droplets, ShieldCheck, Leaf, Pill, Zap, Brain } from "lucide-react";
 import { type Product } from "@/data/products";
 
 type Props = { product: Product };
 
-const cicaplastIngredients = [
-  { icon: Droplets, name: "TRIBIOMA", desc: "Complex prebiotic patentat" },
-  { icon: ShieldCheck, name: "PANTHENOL B5", desc: "Calmează și repară bariera" },
-  { icon: Leaf, name: "MADECASSOSIDA", desc: "Reînnoire celulară naturală" },
-];
-
-const sideralIngredients = [
-  { icon: Pill, name: "FIER SUCROSOMIAL", desc: "Absorbție superioară, fără efecte gastrice" },
-  { icon: ShieldCheck, name: "VITAMINA C", desc: "Crește absorbția fierului" },
-  { icon: Leaf, name: "VITAMINA B12", desc: "Formarea globulelor roșii" },
-];
+const ingredientsBySlug: Record<string, { icon: typeof Droplets; name: string; desc: string }[]> = {
+  "balsam-ultra-reparator-calmant-cicaplast-b5-100ml-la-roche-posay": [
+    { icon: Droplets, name: "TRIBIOMA", desc: "Complex prebiotic patentat" },
+    { icon: ShieldCheck, name: "PANTHENOL B5", desc: "Calmează și repară bariera" },
+    { icon: Leaf, name: "MADECASSOSIDA", desc: "Reînnoire celulară naturală" },
+  ],
+  "sideral-forte-30-capsule-labormed": [
+    { icon: Pill, name: "FIER SUCROSOMIAL", desc: "Absorbție superioară, fără efecte gastrice" },
+    { icon: ShieldCheck, name: "VITAMINA C", desc: "Crește absorbția fierului" },
+    { icon: Leaf, name: "VITAMINA B12", desc: "Formarea globulelor roșii" },
+  ],
+  "tonotil-n-10-flacoane-buvabile-vianex": [
+    { icon: Brain, name: "FOSFOSERINĂ", desc: "Biosinteza fosfolipidelor nervoase" },
+    { icon: Zap, name: "L-ARGININĂ", desc: "Energie celulară și hematopoieză" },
+    { icon: Pill, name: "HIDROXOCOBALAMINĂ", desc: "Vitamina B12 activă" },
+  ],
+};
 
 const BrandBanner = ({ product }: Props) => {
-  const isCicaplast = product.slug.includes("cicaplast");
-  const ingredients = isCicaplast ? cicaplastIngredients : sideralIngredients;
+  const ingredients = ingredientsBySlug[product.slug] || ingredientsBySlug["sideral-forte-30-capsule-labormed"];
 
   return (
     <div className="mx-4 my-4 rounded-xl overflow-hidden border" style={{ background: "linear-gradient(135deg, hsl(210 40% 96%), hsl(210 50% 98%))" }}>

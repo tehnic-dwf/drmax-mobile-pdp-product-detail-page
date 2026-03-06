@@ -39,6 +39,7 @@ import productCicaplast3 from "@/assets/product-cicaplast-3.webp";
 import productCicaplast4 from "@/assets/product-cicaplast-4.webp";
 import productCicaplast5 from "@/assets/product-cicaplast-5.webp";
 import productSideralMain from "@/assets/product-sideral-main.webp";
+import productTonotilMain from "@/assets/product-tonotil-main.webp";
 
 export const products: Product[] = [
   {
@@ -124,6 +125,44 @@ export const products: Product[] = [
       { label: "Categorie", value: "Multivitamine adulți" },
     ],
     trustBadge: "✓ Supliment alimentar notificat",
+  },
+  {
+    slug: "tonotil-n-10-flacoane-buvabile-vianex",
+    name: "Tonotil-N",
+    fullTitle: "Tonotil-N, 10 flacoane buvabile, Vianex",
+    brand: "VIANEX",
+    brandSlug: "vianex",
+    category: "Medicamente fara reteta",
+    subcategory: "Vitamine și minerale",
+    rating: 4.5,
+    reviewCount: 12,
+    purchasedCount: "2.1k",
+    price: 57.49,
+    pricePerUnit: "5,75 Lei / FL",
+    loyaltyPoints: 57,
+    stockStatus: "in-stock",
+    ean: "5200126100011",
+    categoryBadge: "OTC – Fără rețetă",
+    mainImage: productTonotilMain,
+    images: [productTonotilMain],
+    hasVariants: false,
+    description: "Tonifică organismul, stimulează apetitul, înlătură oboseala fizică și psihică, combate surmenajul, elimină stresul și ajută la recuperarea după intervenții chirurgicale și în convalescență.",
+    bulletPoints: [
+      "Tonifiant general al organismului",
+      "Stimulează apetitul",
+      "Combate oboseala fizică și psihică",
+      "Ajută în convalescență",
+      "Aminoacizi esențiali + Hidroxocobalamină",
+      "Sigur pentru copii, adulți și vârstnici",
+    ],
+    specifications: [
+      { label: "Brand", value: "Vianex" },
+      { label: "EAN", value: "5200126100011" },
+      { label: "Formă", value: "Flacoane buvabile" },
+      { label: "Cantitate", value: "10 flacoane x 10ml" },
+      { label: "Categorie", value: "Medicamente OTC" },
+    ],
+    trustBadge: "✓ Medicament fără rețetă (OTC)",
   },
 ];
 
