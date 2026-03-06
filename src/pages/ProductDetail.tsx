@@ -1,10 +1,41 @@
+import MobileHeader from "@/components/pdp/MobileHeader";
+import ProductGallery from "@/components/pdp/ProductGallery";
+import ProductHeader from "@/components/pdp/ProductHeader";
+import ProductVariants from "@/components/pdp/ProductVariants";
+import ProductBuyBox from "@/components/pdp/ProductBuyBox";
+import TrustBadges from "@/components/pdp/TrustBadges";
+import ProductDetails from "@/components/pdp/ProductDetails";
+import ProductReviews from "@/components/pdp/ProductReviews";
+import StickyAddToCart from "@/components/pdp/StickyAddToCart";
+
 const ProductDetail = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold text-foreground">DrMax - Product Detail Page</h1>
-        <p className="text-muted-foreground mt-2">PDP in curs de dezvoltare...</p>
-      </div>
+    <div className="min-h-screen bg-background max-w-[480px] mx-auto relative">
+      <MobileHeader />
+
+      <main>
+        <ProductGallery />
+
+        <div className="divide-y">
+          <ProductHeader />
+          <ProductVariants />
+          <ProductBuyBox />
+        </div>
+
+        <div className="h-2 bg-background" />
+
+        <TrustBadges />
+
+        <div className="h-2 bg-background" />
+
+        <ProductDetails />
+
+        <div className="h-2 bg-background" />
+
+        <ProductReviews />
+      </main>
+
+      <StickyAddToCart />
     </div>
   );
 };
