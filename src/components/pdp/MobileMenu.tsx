@@ -86,7 +86,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       />
 
       {/* Menu panel */}
-      <div className="relative w-[85%] max-w-[360px] bg-card h-full overflow-y-auto animate-in slide-in-from-left duration-300">
+      <div className="relative w-[85%] max-w-[360px] bg-card h-full overflow-y-auto scrollbar-none animate-in slide-in-from-left duration-300" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {/* Header */}
         <div className="sticky top-0 z-10 bg-primary px-4 py-3 flex items-center justify-between">
           <button
