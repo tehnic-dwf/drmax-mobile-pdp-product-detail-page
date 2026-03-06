@@ -71,7 +71,7 @@ const ProductBuyBox = () => {
         </div>
 
         {/* Add to cart button */}
-        <button className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold text-sm py-3 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-drmax-sm">
+        <button id="main-add-to-cart" className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground font-bold text-sm py-3 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-drmax-sm">
           <ShoppingCart className="w-4 h-4" />
           Adaugă în coș
         </button>
