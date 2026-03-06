@@ -27,11 +27,15 @@ const TrustBadges = () => {
   return (
     <div className="px-4 py-4">
       {/* Authority badges (audit: dermato-cosmetic specific trust) */}
-      <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
+      <div className="flex flex-wrap gap-2 mb-3">
         {["Testat dermatologic", "Fără parabeni", "Produs original"].map((badge, i) => (
           <span
             key={i}
-            className="flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold text-primary bg-secondary px-2.5 py-1 rounded-full"
+            className="flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold px-2.5 py-1 rounded-full"
+            style={{
+              backgroundColor: "hsl(var(--drmax-orange) / 0.12)",
+              color: "hsl(var(--drmax-orange))",
+            }}
           >
             <BadgeCheck className="w-3.5 h-3.5" />
             {badge}

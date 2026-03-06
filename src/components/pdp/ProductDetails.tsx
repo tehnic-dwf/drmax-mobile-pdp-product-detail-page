@@ -8,7 +8,7 @@ type Section = {
 
 const sections: Section[] = [
   {
-    title: "Descriere produs",
+    title: "Descriere și prospect",
     content: (
       <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
         <p>
@@ -29,6 +29,36 @@ const sections: Section[] = [
             <li key={i} className="list-disc text-xs">{item}</li>
           ))}
         </ul>
+        <a
+          href="#"
+          className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
+          onClick={(e) => e.preventDefault()}
+        >
+          📄 Citește aici prospectul CICAPLAST BAUME B5+
+        </a>
+      </div>
+    ),
+  },
+  {
+    title: "Eficacitate dovedită",
+    content: (
+      <div className="space-y-3">
+        {[
+          { pct: "100%", text: "bebeluși au pielea calmată", note: "utilizare 2x/zi, 4 săptămâni" },
+          { pct: "97%", text: "confort după tratament laser", note: "42 persoane, 7 zile" },
+          { pct: "-90%", text: "senzație de durere și mâncărime", note: "54 persoane, după o utilizare" },
+          { pct: "-74%", text: "crăpături superficiale", note: "54 persoane, 7 zile" },
+        ].map((stat, i) => (
+          <div key={i} className="flex gap-3 items-start bg-card border rounded-lg p-3">
+            <span className="text-xl font-extrabold text-primary flex-shrink-0 min-w-[60px]">
+              {stat.pct}
+            </span>
+            <div>
+              <p className="text-sm font-medium text-foreground leading-tight">{stat.text}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">{stat.note}</p>
+            </div>
+          </div>
+        ))}
       </div>
     ),
   },
@@ -59,29 +89,6 @@ const sections: Section[] = [
     ),
   },
   {
-    title: "Eficacitate dovedită",
-    content: (
-      <div className="space-y-3">
-        {[
-          { pct: "100%", text: "bebeluși au pielea calmată", note: "utilizare 2x/zi, 4 săptămâni" },
-          { pct: "97%", text: "confort după tratament laser", note: "42 persoane, 7 zile" },
-          { pct: "-90%", text: "senzație de durere și mâncărime", note: "54 persoane, după o utilizare" },
-          { pct: "-74%", text: "crăpături superficiale", note: "54 persoane, 7 zile" },
-        ].map((stat, i) => (
-          <div key={i} className="flex gap-3 items-start bg-card border rounded-lg p-3">
-            <span className="text-xl font-extrabold text-primary flex-shrink-0 min-w-[60px]">
-              {stat.pct}
-            </span>
-            <div>
-              <p className="text-sm font-medium text-foreground leading-tight">{stat.text}</p>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{stat.note}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    ),
-  },
-  {
     title: "Specificații",
     content: (
       <div className="space-y-2">
@@ -103,7 +110,7 @@ const sections: Section[] = [
 ];
 
 const ProductDetails = () => {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndexes, setOpenIndexes] = useState<number[]>([0, 1]);
 
   return (
     <div className="px-4 py-4">
@@ -111,17 +118,17 @@ const ProductDetails = () => {
         {sections.map((section, i) => (
           <div key={i} className="border rounded-xl overflow-hidden bg-card">
             <button
-              onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+              onClick={() => setOpenIndexes(prev => prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i])}
               className="flex items-center justify-between w-full px-4 py-3.5 text-left"
             >
               <span className="drmax-section-title">{section.title}</span>
               <ChevronDown
                 className={`w-5 h-5 text-muted-foreground transition-transform ${
-                  openIndex === i ? "rotate-180" : ""
+                  openIndexes.includes(i) ? "rotate-180" : ""
                 }`}
               />
             </button>
-            {openIndex === i && (
+            {openIndexes.includes(i) && (
               <div className="px-4 pb-4 animate-fade-in">
                 {section.content}
               </div>
