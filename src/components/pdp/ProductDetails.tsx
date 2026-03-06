@@ -59,6 +59,13 @@ const sections: Section[] = [
             </div>
           </div>
         ))}
+        <a
+          href="#"
+          className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
+          onClick={(e) => e.preventDefault()}
+        >
+          📄 Citește tot despre CICAPLAST BAUME B5+
+        </a>
       </div>
     ),
   },
@@ -85,6 +92,13 @@ const sections: Section[] = [
             Extras din planta medicinală Centella Asiatica, accelerează reînnoirea celulară cu efect calmant.
           </p>
         </div>
+        <a
+          href="#"
+          className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
+          onClick={(e) => e.preventDefault()}
+        >
+          📄 Citește tot despre CICAPLAST BAUME B5+
+        </a>
       </div>
     ),
   },
@@ -104,6 +118,13 @@ const sections: Section[] = [
             <span className="text-xs font-medium text-foreground">{spec.value}</span>
           </div>
         ))}
+        <a
+          href="#"
+          className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
+          onClick={(e) => e.preventDefault()}
+        >
+          📄 Citește tot despre CICAPLAST BAUME B5+
+        </a>
       </div>
     ),
   },
