@@ -1,10 +1,31 @@
+import { useState, useEffect, useRef } from "react";
 import { ShoppingCart } from "lucide-react";
 
 const StickyAddToCart = () => {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Find the main add-to-cart button in the page
+      const mainBtn = document.getElementById("main-add-to-cart");
+      if (mainBtn) {
+        const rect = mainBtn.getBoundingClientRect();
+        // Show sticky bar when main button is scrolled out of view
+        setVisible(rect.bottom < 0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="drmax-sticky-bar">
+    <div
+      className={`drmax-sticky-bar transition-transform duration-300 ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
       <div className="flex items-center gap-3 max-w-[480px] mx-auto">
-        {/* Product info */}
         <div className="flex-1 min-w-0">
           <p className="text-xs text-muted-foreground truncate">Cicaplast B5+ 100ml</p>
           <div className="flex items-baseline gap-1">
