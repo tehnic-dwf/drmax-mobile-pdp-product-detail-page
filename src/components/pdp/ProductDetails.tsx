@@ -64,7 +64,7 @@ const sections: Section[] = [
           className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
           onClick={(e) => e.preventDefault()}
         >
-          📄 Citește tot despre CICAPLAST BAUME B5+
+          📊 Vezi toate rezultatele clinice pentru CICAPLAST BAUME B5+
         </a>
       </div>
     ),
@@ -97,7 +97,7 @@ const sections: Section[] = [
           className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
           onClick={(e) => e.preventDefault()}
         >
-          📄 Citește tot despre CICAPLAST BAUME B5+
+          🧪 Descoperă toate ingredientele active din CICAPLAST BAUME B5+
         </a>
       </div>
     ),
@@ -123,7 +123,7 @@ const sections: Section[] = [
           className="inline-flex items-center gap-1 text-primary font-semibold text-xs hover:underline mt-2"
           onClick={(e) => e.preventDefault()}
         >
-          📄 Citește tot despre CICAPLAST BAUME B5+
+          📋 Vezi fișa completă a produsului CICAPLAST BAUME B5+
         </a>
       </div>
     ),
