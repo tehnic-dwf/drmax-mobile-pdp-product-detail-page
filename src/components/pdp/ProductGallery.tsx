@@ -1,31 +1,23 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import productMain from "@/assets/product-cicaplast-main.webp";
+import product4 from "@/assets/product-cicaplast-4.webp";
 import product2 from "@/assets/product-cicaplast-2.webp";
 import product3 from "@/assets/product-cicaplast-3.webp";
-import product4 from "@/assets/product-cicaplast-4.webp";
 import product5 from "@/assets/product-cicaplast-5.webp";
 
-const images = [productMain, product2, product3, product4, product5];
+// Reordered: main, usage (was 4), then rest
+const images = [productMain, product4, product2, product3, product5];
 
 const ProductGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
-    const diff = touchStart - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && activeIndex < images.length - 1) {
-        setActiveIndex(activeIndex + 1);
-      } else if (diff < 0 && activeIndex > 0) {
-        setActiveIndex(activeIndex - 1);
-      }
-    }
-    setTouchStart(null);
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const scrollLeft = scrollRef.current.scrollLeft;
+    const itemWidth = scrollRef.current.offsetWidth * 0.8; // 80% width per image
+    const newIndex = Math.round(scrollLeft / itemWidth);
+    setActiveIndex(newIndex);
   };
 
   return (
@@ -35,18 +27,26 @@ const ProductGallery = () => {
         <span className="drmax-badge-promo">-15% REDUCERE</span>
       </div>
 
-      {/* Main image */}
+      {/* Horizontal scroll gallery — 80% width so next image peeks */}
       <div
-        className="flex items-center justify-center px-8 py-6 min-h-[300px]"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
       >
-        <img
-          src={images[activeIndex]}
-          alt="Cicaplast B5+ 100ml"
-          className="max-h-[280px] w-auto object-contain animate-fade-in"
-          key={activeIndex}
-        />
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 snap-start flex items-center justify-center px-6 py-6 min-h-[280px]"
+            style={{ width: "80%" }}
+          >
+            <img
+              src={img}
+              alt={`Cicaplast B5+ imagine ${i + 1}`}
+              className="max-h-[260px] w-auto object-contain"
+            />
+          </div>
+        ))}
       </div>
 
       {/* Dots */}
@@ -54,31 +54,17 @@ const ProductGallery = () => {
         {images.map((_, i) => (
           <button
             key={i}
-            onClick={() => setActiveIndex(i)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              i === activeIndex
-                ? "bg-primary w-5"
-                : "bg-border"
+            onClick={() => {
+              if (scrollRef.current) {
+                const itemWidth = scrollRef.current.offsetWidth * 0.8;
+                scrollRef.current.scrollTo({ left: itemWidth * i, behavior: "smooth" });
+              }
+            }}
+            className={`h-2 rounded-full transition-all ${
+              i === activeIndex ? "bg-primary w-5" : "bg-border w-2"
             }`}
             aria-label={`Imagine ${i + 1}`}
           />
-        ))}
-      </div>
-
-      {/* Thumbnails */}
-      <div className="flex gap-2 px-4 pb-4 overflow-x-auto">
-        {images.map((img, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveIndex(i)}
-            className={`flex-shrink-0 w-14 h-14 rounded-md border-2 overflow-hidden transition-all ${
-              i === activeIndex
-                ? "border-primary"
-                : "border-border"
-            }`}
-          >
-            <img src={img} alt="" className="w-full h-full object-contain p-1" />
-          </button>
         ))}
       </div>
     </div>
