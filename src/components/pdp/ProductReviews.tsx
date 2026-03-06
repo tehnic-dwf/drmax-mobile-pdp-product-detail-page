@@ -34,8 +34,32 @@ const sideralReviews = [
   },
 ];
 
+const tonotilReviews = [
+  {
+    author: "Cristina L.", date: "22.01.2025", rating: 5,
+    text: "Folosesc Tonotil-N de câțiva ani, de câte ori simt că sunt epuizată. Efectele se simt din primele zile — mai multă energie, apetit mai bun. Îl dau și copilului în perioadele de examene.",
+    helpful: 15,
+  },
+  {
+    author: "Mihai T.", date: "08.11.2024", rating: 5,
+    text: "Excelent după o gripă puternică. M-am refăcut mult mai repede decât de obicei. Gustul e acceptabil, se bea ușor.",
+    helpful: 9,
+  },
+  {
+    author: "Laura S.", date: "14.08.2024", rating: 4,
+    text: "Bun ca tonifiant general. Prețul e ok pentru ce oferă. Singura observație: fiolele sunt uneori greu de deschis.",
+    helpful: 3,
+  },
+];
+
+const reviewsBySlug: Record<string, typeof cicaplastReviews> = {
+  "balsam-ultra-reparator-calmant-cicaplast-b5-100ml-la-roche-posay": cicaplastReviews,
+  "sideral-forte-30-capsule-labormed": sideralReviews,
+  "tonotil-n-10-flacoane-buvabile-vianex": tonotilReviews,
+};
+
 const ProductReviews = ({ product }: Props) => {
-  const reviews = product.slug.includes("cicaplast") ? cicaplastReviews : sideralReviews;
+  const reviews = reviewsBySlug[product.slug] || cicaplastReviews;
 
   const avgRating = product.rating;
   const reviewCount = product.reviewCount;
