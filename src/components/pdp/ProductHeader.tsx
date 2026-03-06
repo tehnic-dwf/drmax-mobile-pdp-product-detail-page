@@ -1,21 +1,16 @@
-import { Star } from "lucide-react";
+import { Star, ChevronLeft } from "lucide-react";
 
 const ProductHeader = () => {
   return (
-    <div className="px-4 pt-4 pb-3 space-y-2">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-1 text-xs text-muted-foreground overflow-x-auto whitespace-nowrap">
-        <a href="#" className="hover:text-primary transition-colors">Farmacie</a>
-        <span>/</span>
-        <a href="#" className="hover:text-primary transition-colors">Frumusețe și îngrijire</a>
-        <span>/</span>
-        <a href="#" className="hover:text-primary transition-colors">Dermatocosmetice</a>
-        <span>/</span>
-        <span className="text-foreground font-medium truncate">Cicaplast B5+</span>
+    <div className="px-4 pt-3 pb-3 space-y-2">
+      {/* Compact mobile breadcrumb (audit fix: simplified navigation) */}
+      <nav className="flex items-center gap-1.5 text-xs">
+        <ChevronLeft className="w-4 h-4 text-primary" />
+        <a href="#" className="text-primary font-medium hover:underline">Dermatocosmetice</a>
       </nav>
 
-      {/* Brand */}
-      <a href="#" className="inline-block text-xs font-semibold text-primary uppercase tracking-wide">
+      {/* Brand first (audit: Brand > Title > Social Proof hierarchy) */}
+      <a href="#" className="inline-block text-xs font-bold text-drmax-blue uppercase tracking-wider">
         LA ROCHE-POSAY
       </a>
 
@@ -24,26 +19,32 @@ const ProductHeader = () => {
         Balsam ultra-reparator calmant Cicaplast B5+, 100ml
       </h1>
 
-      {/* Gama */}
+      {/* Category + Gama */}
       <p className="text-xs text-muted-foreground">
-        Gama: <a href="#" className="text-primary font-medium">Cicaplast</a>
+        Frumusete si ingrijire · Gama: <a href="#" className="text-primary font-medium">Cicaplast</a>
       </p>
 
-      {/* Rating */}
-      <button className="flex items-center gap-1.5 group" aria-label="Vezi recenzii">
-        <div className="flex items-center gap-0.5">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <Star
-              key={star}
-              className="w-4 h-4 fill-drmax-yellow text-drmax-yellow"
-            />
-          ))}
-        </div>
-        <span className="text-sm font-semibold text-foreground">5.0</span>
-        <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
-          (2 recenzii)
+      {/* Rating + Social proof (audit: enhance trust when few reviews) */}
+      <div className="flex items-center gap-3 flex-wrap">
+        <button className="flex items-center gap-1.5 group" aria-label="Vezi recenzii">
+          <div className="flex items-center gap-0.5">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star
+                key={star}
+                className="w-4 h-4 fill-drmax-yellow text-drmax-yellow"
+              />
+            ))}
+          </div>
+          <span className="text-sm font-semibold text-foreground">5.0</span>
+          <span className="text-xs text-primary font-medium group-hover:underline">
+            (2 recenzii)
+          </span>
+        </button>
+        {/* Additional trust signal for low review count */}
+        <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+          ✓ Recomandat de dermatologi
         </span>
-      </button>
+      </div>
     </div>
   );
 };

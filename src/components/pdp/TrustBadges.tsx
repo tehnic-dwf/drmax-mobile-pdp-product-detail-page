@@ -1,36 +1,49 @@
-import { Truck, RotateCcw, ShieldCheck, Store } from "lucide-react";
+import { Truck, RotateCcw, ShieldCheck, Store, BadgeCheck } from "lucide-react";
 
 const trustItems = [
   {
     icon: Truck,
     label: "Livrare gratuită",
-    detail: "peste 149 Lei",
+    detail: "la comenzi peste 149 Lei",
   },
   {
     icon: Store,
     label: "Click & Collect",
-    detail: "gratuit în farmacii",
+    detail: "gratuit din 900+ farmacii",
   },
   {
     icon: RotateCcw,
     label: "Retur gratuit",
-    detail: "în 14 zile",
+    detail: "în 14 zile, fără întrebări",
   },
   {
     icon: ShieldCheck,
     label: "Produse originale",
-    detail: "conforme UE",
+    detail: "verificate, conforme UE",
   },
 ];
 
 const TrustBadges = () => {
   return (
     <div className="px-4 py-4">
+      {/* Authority badges (audit: dermato-cosmetic specific trust) */}
+      <div className="flex gap-2 mb-3 overflow-x-auto pb-1">
+        {["Testat dermatologic", "Fără parabeni", "Produs original"].map((badge, i) => (
+          <span
+            key={i}
+            className="flex items-center gap-1 whitespace-nowrap text-[11px] font-semibold text-primary bg-secondary px-2.5 py-1 rounded-full"
+          >
+            <BadgeCheck className="w-3.5 h-3.5" />
+            {badge}
+          </span>
+        ))}
+      </div>
+
       <div className="grid grid-cols-2 gap-2">
         {trustItems.map((item, i) => (
           <div
             key={i}
-            className="flex items-start gap-2.5 bg-secondary rounded-lg p-3"
+            className="flex items-start gap-2.5 bg-card border rounded-lg p-3"
           >
             <item.icon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>

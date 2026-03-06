@@ -17,12 +17,12 @@
     --popover-foreground: 210 11% 15%;
 
     /* DrMax Green */
-    --primary: 153 100% 33%;
+    --primary: 88 68% 44%;
     --primary-foreground: 0 0% 100%;
 
     /* Light green surfaces */
-    --secondary: 145 40% 95%;
-    --secondary-foreground: 153 100% 25%;
+    --secondary: 88 40% 95%;
+    --secondary-foreground: 88 68% 30%;
 
     /* Muted grays */
     --muted: 210 20% 96%;
@@ -38,13 +38,13 @@
 
     --border: 210 20% 91%;
     --input: 210 20% 91%;
-    --ring: 153 100% 33%;
+    --ring: 88 68% 44%;
     --radius: 0.75rem;
 
     /* Custom DrMax tokens */
-    --drmax-green: 153 100% 33%;
-    --drmax-green-light: 145 45% 94%;
-    --drmax-green-dark: 153 100% 25%;
+    --drmax-green: 88 68% 44%;
+    --drmax-green-light: 88 45% 94%;
+    --drmax-green-dark: 88 68% 35%;
     --drmax-red: 0 72% 51%;
     --drmax-orange: 24 95% 53%;
     --drmax-yellow: 45 100% 51%;
