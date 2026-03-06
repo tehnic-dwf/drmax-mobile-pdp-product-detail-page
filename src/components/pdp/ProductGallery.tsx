@@ -23,8 +23,9 @@ const ProductGallery = () => {
   return (
     <div className="relative bg-card">
       {/* Badge promo */}
-      <div className="absolute top-3 left-3 z-10">
+      <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
         <span className="drmax-badge-promo">-15% REDUCERE</span>
+        <span className="drmax-badge bg-drmax-blue text-white">Dermato Cosmetice</span>
       </div>
 
       {/* Horizontal scroll gallery — 80% width so next image peeks */}

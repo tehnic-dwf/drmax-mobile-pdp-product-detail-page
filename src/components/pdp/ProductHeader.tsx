@@ -24,8 +24,8 @@ const ProductHeader = () => {
         Frumusete si ingrijire · Gama: <a href="#" className="text-primary font-medium">Cicaplast</a>
       </p>
 
-      {/* Rating + Social proof (audit: enhance trust when few reviews) */}
-      <div className="flex items-center gap-3 flex-wrap">
+      {/* Rating + Social proof */}
+      <div className="flex items-center gap-2 flex-wrap">
         <button className="flex items-center gap-1.5 group" aria-label="Vezi recenzii">
           <div className="flex items-center gap-0.5">
             {[1, 2, 3, 4, 5].map((star) => (
@@ -40,9 +40,19 @@ const ProductHeader = () => {
             (2 recenzii)
           </span>
         </button>
-        {/* Additional trust signal for low review count */}
+        <span className="text-[10px] text-muted-foreground">·</span>
+        <span className="text-[10px] text-muted-foreground font-medium">
+          1.2k cumpărat luna asta
+        </span>
+      </div>
+
+      {/* Trust micro-badges */}
+      <div className="flex items-center gap-2 flex-wrap">
         <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
           ✓ Recomandat de dermatologi
+        </span>
+        <span className="text-[10px] text-white bg-drmax-green px-2 py-0.5 rounded-full font-medium">
+          ✓ Farmacie autorizată
         </span>
       </div>
     </div>

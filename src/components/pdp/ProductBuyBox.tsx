@@ -11,20 +11,27 @@ const ProductBuyBox = () => {
 
   return (
     <div className="px-4 py-4 space-y-3">
-      {/* Stock status + delivery estimate (audit fix) */}
+      {/* Stock status + urgency */}
       <div className="flex flex-col gap-1.5">
         <div className="flex items-center justify-between">
           <span className="drmax-stock-label flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-drmax-success" />
+            <span className="w-2 h-2 rounded-full bg-drmax-success animate-pulse" />
             În stoc
           </span>
-          <span className="text-xs text-muted-foreground">EAN: 3337875816847</span>
+          <span className="text-[10px] font-semibold text-accent bg-accent/10 px-2 py-0.5 rounded-full">
+            ⚡ Ultimele 5 bucăți
+          </span>
         </div>
-        {/* Delivery urgency microcopy (audit: reduces procrastination) */}
         <div className="flex items-center gap-1.5 text-xs">
           <Truck className="w-3.5 h-3.5 text-primary" />
           <span className="text-muted-foreground">
             Comandă în <strong className="text-foreground">{hoursLeft}h {minutesLeft}min</strong> pentru livrare <strong className="text-primary">Mâine</strong>
+          </span>
+        </div>
+        <div className="flex items-center gap-1.5 text-xs">
+          <Clock className="w-3.5 h-3.5 text-primary" />
+          <span className="text-muted-foreground">
+            Ridicare din farmacie: <strong className="text-foreground">Azi, după 14:00</strong>
           </span>
         </div>
       </div>
@@ -33,18 +40,32 @@ const ProductBuyBox = () => {
       <div className="bg-card rounded-xl border p-4 shadow-drmax-sm">
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-baseline gap-2">
+            <span className="drmax-price-old">87,99</span>
             <span className="drmax-price-current">74,49</span>
             <span className="text-base font-bold text-drmax-price">Lei</span>
           </div>
         </div>
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-[10px] font-bold text-white bg-accent px-2 py-0.5 rounded-full">
+            -15% · Economisești 13,50 Lei
+          </span>
+        </div>
         <p className="text-xs text-muted-foreground">Preț / BUC: 74,49 Lei · incl. TVA</p>
 
-        {/* Loyalty price (audit: make loyalty benefit visible) */}
+        {/* Loyalty points highlight */}
+        <div className="mt-2 flex items-center gap-2 bg-drmax-yellow/10 rounded-lg px-3 py-2 border border-drmax-yellow/30">
+          <span className="text-sm">🎁</span>
+          <span className="text-xs text-foreground">
+            Câștigi <strong className="text-drmax-orange">+74 puncte DrMax</strong> la această comandă
+          </span>
+        </div>
+
+        {/* Loyalty price */}
         <div className="mt-2 flex items-center gap-2 bg-drmax-green-light rounded-lg px-3 py-2">
           <span className="text-[10px] font-bold text-primary bg-card px-1.5 py-0.5 rounded">CARD</span>
           <span className="text-xs text-foreground">
             Cu card Dr.Max: <strong className="text-primary">66,99 Lei</strong>
-            <span className="text-muted-foreground ml-1">(-10%)</span>
+            <span className="text-muted-foreground ml-1">(-24%)</span>
           </span>
         </div>
       </div>
@@ -77,10 +98,6 @@ const ProductBuyBox = () => {
         </button>
       </div>
 
-      {/* Loyalty points gamification (audit: gamification) */}
-      <p className="text-center text-[11px] text-muted-foreground">
-        🎁 Câștigi <strong className="text-primary">74 puncte</strong> de loialitate la această comandă
-      </p>
 
       {/* Secondary actions */}
       <div className="flex items-center justify-center gap-6">
