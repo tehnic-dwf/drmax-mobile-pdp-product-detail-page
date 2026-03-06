@@ -1,16 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
+import { type Product } from "@/data/products";
 
-const StickyAddToCart = () => {
+type Props = { product: Product };
+
+const StickyAddToCart = ({ product }: Props) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Find the main add-to-cart button in the page
       const mainBtn = document.getElementById("main-add-to-cart");
       if (mainBtn) {
         const rect = mainBtn.getBoundingClientRect();
-        // Show sticky bar when main button is scrolled out of view
         setVisible(rect.bottom < 0);
       }
     };
@@ -27,9 +28,11 @@ const StickyAddToCart = () => {
     >
       <div className="flex items-center gap-3 max-w-[480px] mx-auto">
         <div className="flex-1 min-w-0">
-          <p className="text-xs text-muted-foreground truncate">Cicaplast B5+ 100ml</p>
+          <p className="text-xs text-muted-foreground truncate">{product.name}</p>
           <div className="flex items-baseline gap-1">
-            <span className="text-lg font-extrabold text-drmax-price">74,49</span>
+            <span className="text-lg font-extrabold text-drmax-price">
+              {product.price.toFixed(2).replace(".", ",")}
+            </span>
             <span className="text-sm font-bold text-drmax-price">Lei</span>
           </div>
         </div>
