@@ -5,8 +5,8 @@ import product2 from "@/assets/product-cicaplast-2.webp";
 import product3 from "@/assets/product-cicaplast-3.webp";
 import product5 from "@/assets/product-cicaplast-5.webp";
 
-// Reordered: main, usage (was 4), then rest
-const images = [productMain, product4, product2, product3, product5];
+// Reordered: main, product3 (pos 4 → pos 2), then rest
+const images = [productMain, product3, product4, product2, product5];
 
 const ProductGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
