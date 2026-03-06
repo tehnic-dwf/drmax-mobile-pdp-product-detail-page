@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import drmaxLogo from "@/assets/drmax-logo.svg";
+import footerBadges from "@/assets/footer-badges.png";
 
 type FooterSection = {
   title: string;
@@ -194,49 +195,61 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Legal */}
-      <div className="px-4 py-4 border-t border-white/10 space-y-3">
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
-          {[
-            "Termeni și condiții",
-            "Politica de confidențialitate",
-            "Politica cookies",
-            "ANPC",
-            "SOL",
-          ].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-[10px] text-white/50 hover:text-primary transition-colors"
-              onClick={(e) => e.preventDefault()}
-            >
-              {link}
-            </a>
-          ))}
-        </div>
-
-        {/* ANPC badges */}
-        <div className="flex items-center gap-3">
-          <div className="bg-white/10 rounded-lg px-3 py-2 text-center">
-            <p className="text-[8px] text-white/40 leading-tight">ANPC</p>
-            <p className="text-[10px] font-semibold text-white/70">Protecția<br />Consumatorilor</p>
-          </div>
-          <div className="bg-white/10 rounded-lg px-3 py-2 text-center">
-            <p className="text-[8px] text-white/40 leading-tight">SOL</p>
-            <p className="text-[10px] font-semibold text-white/70">Soluționare<br />Online Litigii</p>
-          </div>
-        </div>
+      {/* Obligatoriu 1: Badges — Ministerul Sănătății, ANPC, SOL, PCI, Visa, Mastercard */}
+      <div className="px-4 py-5 border-t border-white/10">
+        <img
+          src={footerBadges}
+          alt="Ministerul Sănătății, ANPC, Soluționarea Online a Litigiilor, PCI DSS, Visa, Mastercard"
+          className="w-full max-w-[380px] mx-auto rounded-lg"
+        />
       </div>
 
-      {/* Copyright */}
-      <div className="px-4 py-4 border-t border-white/10 text-center">
-        <img src={drmaxLogo} alt="Dr.Max" className="h-6 mx-auto mb-2 brightness-0 invert opacity-60" />
-        <p className="text-[10px] text-white/40">
-          © {new Date().getFullYear()} Dr.Max Farmacie. Toate drepturile rezervate.
-        </p>
-        <p className="text-[10px] text-white/30 mt-1">
-          SC Dr.Max Farma S.R.L. · CUI RO14965729 · J40/8635/2002
-        </p>
+      {/* Obligatoriu 3: Iframe Ministerul Sănătății — EU Common Logo farmacie online */}
+      <div className="px-4 py-4 border-t border-white/10 flex justify-center">
+        <iframe
+          src="https://ec.europa.eu/tools/eudor/api/badges/v1/badge?country=RO&id=9378655"
+          title="Verificare farmacie online - Ministerul Sănătății"
+          className="border-0 rounded-lg bg-white"
+          width="160"
+          height="190"
+          scrolling="no"
+        />
+      </div>
+
+      {/* Obligatoriu 2: Copyright + date juridice complete */}
+      <div className="px-4 py-4 border-t border-white/10">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <p className="text-[10px] text-white/50">
+            © {new Date().getFullYear()} Dr. Max Farmacie. Toate drepturile rezervate
+          </p>
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
+            {["Despre", "Articole", "Farmacii", "Program de loialitate"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-[10px] text-white/50 hover:text-primary transition-colors"
+                onClick={(e) => e.preventDefault()}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-3">
+            <a href="tel:0800080400" className="text-[10px] text-white/50 hover:text-primary flex items-center gap-1">
+              <Phone className="w-3 h-3" /> 0800 080 400
+            </a>
+            <a href="mailto:info@drmax.ro" className="text-[10px] text-white/50 hover:text-primary flex items-center gap-1">
+              <Mail className="w-3 h-3" /> info@drmax.ro
+            </a>
+          </div>
+        </div>
+        <div className="bg-drmax-blue/10 border border-drmax-blue/20 rounded-lg px-3 py-2.5">
+          <p className="text-[9px] text-white/50 leading-relaxed">
+            DR.MAX S.R.L., CUI: 9378655, J23/673/2007, sediu Mogoșoaia, str. Aeroportului, nr. 53, Ilfov, 
+            punct de lucru: Mogoșoaia, str. Buiacului, nr. 2, Zona de Depozitare Suplimentară și Zona de 
+            Mezanin Suplimentară, Ilfov, autorizația MS 3059/NT3480/04.06.2020
+          </p>
+        </div>
       </div>
     </footer>
   );
