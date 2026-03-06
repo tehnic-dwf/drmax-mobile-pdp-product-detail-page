@@ -14,10 +14,13 @@ const ProductDetail = () => {
       <MobileHeader />
 
       <main>
+        {/* Header info FIRST: breadcrumb, brand, title, category, rating */}
+        <ProductHeader />
+
+        {/* Then gallery */}
         <ProductGallery />
 
         <div className="divide-y">
-          <ProductHeader />
           <ProductVariants />
           <ProductBuyBox />
         </div>
