@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, ShoppingCart, Minus, Plus, Clock, Truck } from "lucide-react";
+import { Heart, ShoppingCart, Minus, Plus, Clock, Truck, Bell } from "lucide-react";
 
 const ProductBuyBox = () => {
   const [qty, setQty] = useState(1);
@@ -82,14 +82,23 @@ const ProductBuyBox = () => {
         🎁 Câștigi <strong className="text-primary">74 puncte</strong> de loialitate la această comandă
       </p>
 
-      {/* Wishlist */}
-      <button
-        onClick={() => setIsFav(!isFav)}
-        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors w-full justify-center py-1"
-      >
-        <Heart className={`w-4 h-4 ${isFav ? "fill-drmax-red text-drmax-red" : ""}`} />
-        {isFav ? "Salvat la favorite" : "Adaugă la favorite"}
-      </button>
+      {/* Secondary actions */}
+      <div className="flex items-center justify-center gap-6">
+        <button
+          onClick={() => setIsFav(!isFav)}
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors py-1"
+        >
+          <Heart className={`w-4 h-4 ${isFav ? "fill-drmax-red text-drmax-red" : ""}`} />
+          {isFav ? "Salvat" : "Favorite"}
+        </button>
+        <div className="w-px h-4 bg-border" />
+        <button
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors py-1"
+        >
+          <Bell className="w-4 h-4" />
+          Alertă de preț
+        </button>
+      </div>
     </div>
   );
 };

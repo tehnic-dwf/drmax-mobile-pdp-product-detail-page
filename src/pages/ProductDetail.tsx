@@ -7,6 +7,7 @@ import TrustBadges from "@/components/pdp/TrustBadges";
 import ProductDetails from "@/components/pdp/ProductDetails";
 import ProductReviews from "@/components/pdp/ProductReviews";
 import StickyAddToCart from "@/components/pdp/StickyAddToCart";
+import ProductCarousels from "@/components/pdp/ProductCarousels";
 
 const ProductDetail = () => {
   return (
@@ -32,6 +33,10 @@ const ProductDetail = () => {
         <div className="h-2 bg-background" />
 
         <ProductDetails />
+
+        <div className="h-2 bg-background" />
+
+        <ProductCarousels />
 
         <div className="h-2 bg-background" />
 
