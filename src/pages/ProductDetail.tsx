@@ -8,6 +8,8 @@ import ProductDetails from "@/components/pdp/ProductDetails";
 import ProductReviews from "@/components/pdp/ProductReviews";
 import StickyAddToCart from "@/components/pdp/StickyAddToCart";
 import ProductCarousels from "@/components/pdp/ProductCarousels";
+import BrandBanner from "@/components/pdp/BrandBanner";
+import MedicalDisclaimer from "@/components/pdp/MedicalDisclaimer";
 
 const ProductDetail = () => {
   return (
@@ -15,10 +17,7 @@ const ProductDetail = () => {
       <MobileHeader />
 
       <main>
-        {/* Header info FIRST: breadcrumb, brand, title, category, rating */}
         <ProductHeader />
-
-        {/* Then gallery */}
         <ProductGallery />
 
         <div className="divide-y">
@@ -29,6 +28,8 @@ const ProductDetail = () => {
         <div className="h-2 bg-background" />
 
         <TrustBadges />
+
+        <BrandBanner />
 
         <div className="h-2 bg-background" />
 
@@ -41,6 +42,10 @@ const ProductDetail = () => {
         <div className="h-2 bg-background" />
 
         <ProductReviews />
+
+        <MedicalDisclaimer />
+
+        <div className="h-20" /> {/* Space for sticky bar */}
       </main>
 
       <StickyAddToCart />
