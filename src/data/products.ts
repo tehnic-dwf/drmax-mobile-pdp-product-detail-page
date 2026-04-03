@@ -75,6 +75,7 @@ export const products: Product[] = [
       { label: "40ml", available: true },
       { label: "100ml", available: true },
     ],
+    indications: ["Iritații ale pielii", "Cicatrici", "Post-proceduri dermatologice"],
     description: "Balsam reparator cu indicații multiple, ce accelerează repararea de la prima utilizare, calmează și protejează pielea iritată.",
     bulletPoints: [
       "Post-tatuare", "Iritații superficiale", "Mușcături insecte",
