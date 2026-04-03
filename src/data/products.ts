@@ -45,7 +45,7 @@ export const products: Product[] = [
   {
     slug: "balsam-ultra-reparator-calmant-cicaplast-b5-100ml-la-roche-posay",
     name: "Cicaplast Baume B5+",
-    fullTitle: "Balsam ultra-reparator calmant cu indicatii multiple pentru iritatii ale pielii si cicatrici Cicaplast B5+, 100ml, La Roche-Posay",
+    fullTitle: "Balsam ultra-reparator calmant Cicaplast B5+, 100ml, La Roche-Posay",
     brand: "LA ROCHE-POSAY",
     brandSlug: "la-roche-posay",
     category: "Frumusete si ingrijire",
