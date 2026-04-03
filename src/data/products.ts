@@ -30,6 +30,7 @@ export type Product = {
   bulletPoints?: string[];
   specifications: { label: string; value: string }[];
   trustBadge: string;
+  indications?: string[];
 };
 
 // Lazy image imports
