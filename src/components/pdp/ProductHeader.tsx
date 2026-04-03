@@ -1,9 +1,10 @@
 import { Star, ChevronLeft } from "lucide-react";
 import { type Product } from "@/data/products";
 
-type Props = { product: Product };
+type Props = { product: Product; dynamicTitle?: string };
 
-const ProductHeader = ({ product }: Props) => {
+const ProductHeader = ({ product, dynamicTitle }: Props) => {
+  const title = dynamicTitle || product.fullTitle;
   return (
     <div className="px-4 pt-3 pb-3 space-y-2">
       <nav className="flex items-center gap-1.5 text-xs">
@@ -16,7 +17,7 @@ const ProductHeader = ({ product }: Props) => {
       </a>
 
       <h1 className="text-lg font-bold leading-normal text-foreground">
-        {product.fullTitle}
+        {title}
       </h1>
 
       <p className="text-xs text-muted-foreground">

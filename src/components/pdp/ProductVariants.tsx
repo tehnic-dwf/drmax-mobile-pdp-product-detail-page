@@ -1,12 +1,12 @@
-import { useState } from "react";
+
 
 type Props = {
   variants: { label: string; available: boolean }[];
+  selected: number;
+  onSelect: (index: number) => void;
 };
 
-const ProductVariants = ({ variants }: Props) => {
-  const defaultSelected = variants.findIndex((v) => v.available);
-  const [selected, setSelected] = useState(defaultSelected >= 0 ? defaultSelected : 0);
+const ProductVariants = ({ variants, selected, onSelect }: Props) => {
   const availableCount = variants.filter((v) => v.available).length;
 
   return (
@@ -17,7 +17,7 @@ const ProductVariants = ({ variants }: Props) => {
           <button
             key={i}
             disabled={!v.available}
-            onClick={() => v.available && setSelected(i)}
+            onClick={() => v.available && onSelect(i)}
             className={`flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold border-2 transition-all ${
               i === selected
                 ? "border-primary bg-secondary text-secondary-foreground"
