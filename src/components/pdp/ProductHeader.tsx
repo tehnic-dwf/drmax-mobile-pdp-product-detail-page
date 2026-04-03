@@ -6,21 +6,21 @@ type Props = { product: Product; dynamicTitle?: string };
 const ProductHeader = ({ product, dynamicTitle }: Props) => {
   const title = dynamicTitle || product.fullTitle;
   return (
-    <div className="px-4 pt-3 pb-3 space-y-2">
-      <nav className="flex items-center gap-1.5 text-xs">
-        <ChevronLeft className="w-4 h-4 text-primary" />
+    <div className="px-4 pt-3 pb-3 space-y-2.5">
+      <nav className="flex items-center gap-1.5 text-sm">
+        <ChevronLeft className="w-5 h-5 text-primary" />
         <a href="#" className="text-primary font-medium hover:underline">{product.subcategory}</a>
       </nav>
 
-      <a href="#" className="inline-block text-xs font-bold text-drmax-blue uppercase tracking-wider">
+      <a href="#" className="inline-block text-sm font-bold text-drmax-blue uppercase tracking-wider">
         {product.brand}
       </a>
 
-      <h1 className="text-lg font-bold leading-normal text-foreground">
+      <h1 className="text-[22px] font-bold leading-normal text-foreground">
         {title}
       </h1>
 
-      <p className="text-xs text-muted-foreground">
+      <p className="text-sm text-muted-foreground">
         {product.category}
         {product.gammaName && (
           <> · Gama: <a href="#" className="text-primary font-medium">{product.gammaName}</a></>
@@ -33,7 +33,7 @@ const ProductHeader = ({ product, dynamicTitle }: Props) => {
             {[1, 2, 3, 4, 5].map((star) => (
               <Star
                 key={star}
-                className={`w-4 h-4 ${
+                className={`w-5 h-5 ${
                   star <= Math.round(product.rating)
                     ? "fill-drmax-yellow text-drmax-yellow"
                     : "text-border"
@@ -41,22 +41,22 @@ const ProductHeader = ({ product, dynamicTitle }: Props) => {
               />
             ))}
           </div>
-          <span className="text-sm font-semibold text-foreground">{product.rating}</span>
-          <span className="text-xs text-primary font-medium group-hover:underline">
+          <span className="text-base font-semibold text-foreground">{product.rating}</span>
+          <span className="text-sm text-primary font-medium group-hover:underline">
             ({product.reviewCount} recenzii)
           </span>
         </button>
-        <span className="text-[10px] text-muted-foreground">·</span>
-        <span className="text-[10px] text-muted-foreground font-medium">
+        <span className="text-xs text-muted-foreground">·</span>
+        <span className="text-xs text-muted-foreground font-medium">
           {product.purchasedCount} cumpărat luna asta
         </span>
       </div>
 
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-[10px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+        <span className="text-xs text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
           {product.trustBadge}
         </span>
-        <span className="text-[10px] text-white bg-drmax-green px-2 py-0.5 rounded-full font-medium">
+        <span className="text-xs text-white bg-drmax-green px-2.5 py-1 rounded-full font-medium">
           ✓ Farmacie autorizată
         </span>
       </div>
