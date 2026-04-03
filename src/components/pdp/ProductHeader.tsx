@@ -15,7 +15,7 @@ const ProductHeader = ({ product }: Props) => {
         {product.brand}
       </a>
 
-      <h1 className="text-lg font-bold leading-snug text-foreground">
+      <h1 className="text-lg font-bold leading-normal text-foreground">
         {product.fullTitle}
       </h1>
 
