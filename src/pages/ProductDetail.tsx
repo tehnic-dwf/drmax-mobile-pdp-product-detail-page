@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MobileHeader from "@/components/pdp/MobileHeader";
 import ProductGallery from "@/components/pdp/ProductGallery";
