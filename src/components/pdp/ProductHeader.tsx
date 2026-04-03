@@ -17,7 +17,7 @@ const ProductHeader = ({ product, dynamicTitle }: Props) => {
       </a>
 
       <h1 className="text-lg font-bold leading-normal text-foreground">
-        {product.fullTitle}
+        {title}
       </h1>
 
       <p className="text-xs text-muted-foreground">

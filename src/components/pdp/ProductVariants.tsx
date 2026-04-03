@@ -2,11 +2,11 @@ import { useState } from "react";
 
 type Props = {
   variants: { label: string; available: boolean }[];
+  selected: number;
+  onSelect: (index: number) => void;
 };
 
-const ProductVariants = ({ variants }: Props) => {
-  const defaultSelected = variants.findIndex((v) => v.available);
-  const [selected, setSelected] = useState(defaultSelected >= 0 ? defaultSelected : 0);
+const ProductVariants = ({ variants, selected, onSelect }: Props) => {
   const availableCount = variants.filter((v) => v.available).length;
 
   return (
