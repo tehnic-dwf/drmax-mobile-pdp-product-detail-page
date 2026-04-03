@@ -20,6 +20,16 @@ const ProductHeader = ({ product, dynamicTitle }: Props) => {
         {title}
       </h1>
 
+      {product.indications && product.indications.length > 0 && (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          {product.indications.map((ind, i) => (
+            <span key={i} className="text-xs font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+              {ind}
+            </span>
+          ))}
+        </div>
+      )}
+
       <p className="text-sm text-muted-foreground">
         {product.category}
         {product.gammaName && (
