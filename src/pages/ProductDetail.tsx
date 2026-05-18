@@ -15,7 +15,7 @@ import MedicalDisclaimer from "@/components/pdp/MedicalDisclaimer";
 import Footer from "@/components/pdp/Footer";
 import RecentlyViewed from "@/components/pdp/RecentlyViewed";
 import { getProductBySlug, getOtherProducts, products } from "@/data/products";
-import LiveSiteButton from "@/components/LiveSiteButton";
+
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -89,7 +89,6 @@ const ProductDetail = () => {
       </main>
 
       <StickyAddToCart product={product} />
-      <LiveSiteButton />
     </div>
   );
 };
