@@ -1,9 +1,9 @@
 import { ExternalLink } from "lucide-react";
 
-// 👉 Edit this to your GitHub Pages URL, e.g. "https://username.github.io/repo-name/"
+// 👉 GitHub Pages URL for this repo
 const LIVE_URL =
   (import.meta.env.VITE_LIVE_URL as string | undefined) ??
-  "https://YOUR-USERNAME.github.io/YOUR-REPO/";
+  "https://tehnic-dwf.github.io/drmax-mobile-pdp-product-detail-page/";
 
 const LiveSiteButton = () => {
   return (
